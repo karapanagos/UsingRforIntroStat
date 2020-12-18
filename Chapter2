@@ -1,0 +1,243 @@
+# ******************************
+# * Chapter 2: UNIVARIATE DATA *
+# ******************************
+
+library(UsingR)
+library(MASS)
+#---------------------------------------------------------------------------------------------
+# paragraph 2.1.6 (page 39)
+#---------------------------------------------------------------------------------------------
+
+# problem 2.1 
+
+# problem 2.2 - media search and analysis
+
+# problem 2.3 - media search and analysis
+
+# problem 2.4
+head(central.park); summary(central.park)
+attach(central.park)
+table(WX); table(WX, exclude=FALSE)
+detach(central.park)
+
+# problem 2.5
+browser<-c(.86,.4,.5,.1,.4)
+names(browser)<-c('explorer','gecko','netscape','opera','NA')
+barplot(browser*100, main="browser statistics", xlab=, ylab="usage percentage (%)", );mtext("source ...",1,4,adj=1,cex=.7)			# bar chart
+pie(browser*100,main="browser statistics")																# pie chart
+dotchart(browser,main="browser statistics", xlab="usage percentage (%)",ylab="browser type/brand");mtext("source ...",1,4,adj=1,cex=.7)	# dot chart
+
+# problem 2.6
+mp3<-c(.18, .15, .144, .135, .062); names(mp3)<-c('apple','rca','rio','iRiver','creative');mp3
+(1-sum(mp3))*100				# percent of other
+mp3<-c(mp3,(1-sum(mp3))); names(mp3)[6]<-"other" ; mp3
+dollars<-mp3*22; dollars*1000000	# dollars per company
+barplot(dollars, main="Sales of MP3 players", xlab="mp3 company", ylab="Sales in million $", );mtext("source NY Times",1,4,adj=1,cex=.7)	# bar chart
+pie(dollars,main="Sales of MP3 players"); ;mtext("source NY Times",1,4,adj=1,cex=.7)									# pie chart
+dotchart(dollars,main="Sales of MP3 players", xlab="Sales in million $",ylab="mp3 company");mtext("source NY Times",1,4,adj=1,cex=.7)	# dot chart
+
+# problem 2.7
+attach(mtcars)
+dotchart(mpg)
+dotchart(mpg, labels=rownames(mtcars), cex.axis=.8)
+detach(mtcars)
+
+# problem 2.8
+attach(npdb); head(npdb)
+sort(table(state))
+detach(npdb)
+
+# problem 2.9
+table(npdb$ID)
+
+# problem 2.10
+attach(MLBattend)
+head(MLBattend)
+yankies<-wins[franchise=="NYA"]
+names(yankies)<-as.character(1969:2000)
+barplot(yankies, main='New York Yankees\' wins from 1960 to 2000',cex.main=0.9, cex.axis=0.8)
+dotchart(yankies, main='New York Yankees\' wins from 1960 to 2000',cex.main=0.9, cex.axis=0.8)
+detach(MLBattend)
+
+#---------------------------------------------------------------------------------------------
+# paragraph 2.2.5 (page 53)
+#---------------------------------------------------------------------------------------------
+
+# problem 2.11
+temp<-c(80,82,88,91,91,95,95,97,98,101,106,106,109,110,111)
+stem(temp)			# by inspection of the stem chart the media is 97
+median(temp)
+
+# problem 2.12
+# from inspection: median=58, mean= 54, trimmed mean=56
+temp<-scan("tempR.txt"); temp		#vanues scanned in: 12 17 23 28 34 42 50 59 66 73 79 87 96 103 110
+median(temp); mean(temp); mean(temp, trim=.1)  #median=62.5, mean=61.14286, trimmed mean=61.16667
+# the above values mediate a lot from my predictions, I checke the data and the 3rd value (23) was missing
+# new values median=59, mean= 58.6, trimmed mean=58.23077
+
+# problem 2.13 - no code is needed
+# problem 2.14 - no code is needed
+
+# problem 2.15
+sum(pi2000<=3)*100/length(pi2000)
+sum(pi2000>=5)*100/length(pi2000)
+
+# problem 2.16
+sum(rivers<500)*100/length(rivers)
+sum(rivers<mean(rivers))*100/length(rivers)
+sort(rivers)[round(length(rivers)*0.75)]
+quantile(rivers,.75)
+
+# problem 2.17
+head(nym.2002)
+attach(nym.2002)
+sum(time<(3*60))*100/length(time)
+quantile(time, .9); quantile(time, .75)
+quantile(time, .1)
+detach(nym.2002)
+
+# problem 2.18
+temp<-c(round(mean(rivers)), median(rivers), round(mean(rivers, trim=.25))); names(temp)=c("mean","median",".25 trimmed mean"); temp
+
+# problem 2.19
+stem(islands)
+temp<-c(round(mean(islands)), median(islands), round(mean(islands, trim=.25))); names(temp)=c("mean","median",".25 trimmed mean"); temp
+
+# problem 2.20
+x<-OBP["bondsba01"]
+(x-mean(OBP))/sd(OBP)
+x.z<-scale(OBP); x.z["bondsba01",]
+
+# problem 2.21
+rivers.z<-scale(rivers); head(rivers.z)
+round(mean(rivers.z));sd(rivers.z)
+
+# problem 2.22 - Median Absolute Deviation
+temp<-c(sd(exec.pay),IQR(exec.pay),mad(exec.pay)); names(temp)<-c('standard dev','inter-quantile','median absolute dev')
+temp
+
+# problem 2.23
+attach(npdb)
+mean(amount); median(amount)
+sum(amount<=mean(amount))/length(amount)		#percentile
+detach(npdb)
+
+# problem 2.24
+attach(cabinet)
+mean(est.tax.savings);median(est.tax.savings)
+detach(cabinet)
+
+# problem 2.25 - coefficient of variation
+temp<-c(sd(rivers)/mean(rivers),sd(pi2000)/mean(pi2000)); names(temp)<-c('cv of rivers','cv of p digits')
+temp
+
+# problem 2.26 - lag plot
+x1<-rnorm(100);x2<-sin(1:100)
+plot(x1[-length(x1)],x1[-1])
+plot(x2[-length(x2)],x2[-1])
+
+# problem 2.27 -  problem 2.28 - problem 2.29: classical statistics problems
+
+#---------------------------------------------------------------------------------------------
+# paragraph 2.3.4 (page 66)
+#---------------------------------------------------------------------------------------------
+
+# problem 2.30
+hist(bumpers)						# guesses:	mean=2000, median=2000, sd=1000
+mean(bumpers); median(bumpers); sd(bumpers)	# ans:	mean=2122, median=2129, sd=798
+hist(firstchi)						# guesses:	mean=22,5, median=26, sd=8 
+mean(firstchi); median(firstchi); sd(firstchi)	# ans:	mean=23.9, median=23, sd=6.2 
+hist(math)							# guesses:	mean=55, median=55, sd=10 
+mean(math); median(math); sd(math)			# ans:	mean=54.9, median=54, sd=9,7 
+
+# problem 2.31
+x1<-rnorm(100); hist(x1)
+x2<-rnorm(100); hist(x2)
+
+# problem 2.32
+hist(pi2000); lines(density(pi2000))
+hist(pi2000, breaks=0:10-.5)
+
+# problem 2.33
+attach(normtemp)
+hist(temperature)		# guess:	mean=98.4
+mean(temperature)		# ans		mean = 98,24923 
+detach(normtemp)
+
+# problem 2.34
+head(DDT)
+hist(DDT)		# guess:	mean=3.5, sd=0.8
+boxplot(DDT)	# guess:	mean=, sd=
+mean(DDT);sd(DDT)	# ans:	mean=3.328, sd=0.4371531
+
+# problem 2.35
+names(state.area)<-state.abb
+area.sorted<-state.area; area.sorted
+sum(area.sorted<area.sorted["NJ"])*100/length(area.sorted)
+truehist(area.sorted)
+f<-fivenum(state.area)
+state.area[state.area>f[4]]	# chooses the values greater than the upper hinge
+
+# problem 2.36
+attach(nym.2002)
+hist(time)		skewed to the right (positive skewness), thus: mean>median>mode
+lines(density(time))
+detach(nym.2002)
+
+# problem 2.37
+hist(lawsuits)
+mean(lawsuits);median(lawsuits)
+
+# problem 2.38
+attach(babyboom)
+hist(wt)		# skewed to the left (negative skewness), thus: mean<median<mode
+hist(diff(running.time))
+detach(babyboom)
+
+# problem 2.39
+attach(hall.fame)
+hist(HR)		# skewed to right (pisitive skewness)
+hist(BA)		# symmetric
+hist(OBP)		# symmetric
+
+# problem 2.40
+
+# problem 2.41
+x<-rnorm(1000)
+par(mfrow=c(1,4))
+boxplot(x, range=0.5, xlab="range=0.5")
+boxplot(x, range=1.0, xlab="range=1.0")
+boxplot(x, range=1.5, xlab="range=1.5")
+boxplot(x, range=2.0, xlab="range=2.0")
+
+# problem 2.42
+attach(cfb)
+hist(AGE)
+hist(EDUC)
+hist(NETWORTH)
+hist(log(SAVING+1))	#SAVING has mainly numbers around zero and few value many orders of magnitude higher
+				#to get rid of of all these multiple zeros figures and the shape distortion they cause
+				#we log the y-scale. But since many sbj from the sample have zero savings, and log is INF for 0
+				#we add 1 to correct this
+detach(cfb)
+
+# problem 2.43
+hist(brightness)		# fairly symmetrical with a slightly fater left tail (slightly skewed to the left))
+
+# problem 2.44
+par(mfrow=c(2,2))
+hist(lawsuits)
+boxplot(lawsuits)
+hist(log(lawsuits))
+boxplot(log(lawsuits))
+
+# problem 2.45
+a<-exec.pay
+a.log<-log(1+a, 10)	# log with base 10
+hist(a)
+hist(a.log)
+median(a.log);mean(a.log)
+1+10^median(a.log);1+10^mean(a.log)
+median(a);mean(a)
+
+# problem 2.46
