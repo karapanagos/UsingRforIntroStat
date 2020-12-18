@@ -1,0 +1,155 @@
+# *******************
+# * Chapter 1: DATA *
+# *******************
+
+library(UsingR)
+library(MASS)
+#---------------------------------------------------------------------------------------------
+# paragraph 1.2.7 (page 14)
+#---------------------------------------------------------------------------------------------
+# problem 1.4
+1+2*(3+4)
+(4^3)+3^(2+1)
+sqrt((4+3)*(2+1))
+((1+2)/(3+4))^2
+
+# problem 1.5
+2+3-4		# here it doesn't matter the order, the result wold be 1 
+2+3*4		# 2+(3*4)=14 (alt ans: 20)
+2/3/4		# (2/4)/4=0.16 (alt ans: 2.6)
+2^3^4		# again no alternative 2.417...
+
+# problem 1.6
+p<-c(2,3,5,7,11,13,17,19)
+length(p)
+
+# problem 1.7
+gas<-c(65311, 65624, 65908, 66219, 66499, 66821, 67145, 67447)
+diff(gas)  #the difference of successive values, flactuation of successive fill-ups
+mean(gas)
+mean(diff(gas))
+
+# problem 1.8
+x<-c(2,5,4,10,8)
+x^2
+x-6
+(x-9)^2
+
+# problem 1.9
+mini<-c(15.9, 21.4, 19.9, 21.9, 20.0, 16.5, 17.7, 17.5)
+min(mini)*1000; max(mini)*1000
+mean(mini)*1000
+
+# problem 1.10
+H1<-c(2700,2600, 3050, 2900, 3000, 2500, 2600, 3000, 2800, 3200, 2800, 3400)
+cumsum(H1)
+which(diff(H1)== min(diff(H1)))
+
+# problem 1.11
+cal<-c(2450, 2439, 2866, 2618)
+fat<-c(0.37, 0.362, 0.34, 0.321)
+carb<-c(0.422, 0.431, 0.481, 0.5)
+cal*fat; cal*carb
+
+# problem 1.12
+rep("a",5)
+seq(1,100,2)
+which((seq(1,100,2)%%2)!=1)  #test if there is even number in the sequence
+c(rep(1,3),rep(2,3),rep(3,3))
+c(1:5,4:1)
+
+# problem 1.13
+v1<-					# the 8 first terms of a fibonacci seq
+v2<-(1:10); v2
+v3<-fractions(1/v2); v3
+v4<-(1:6)^3 ;v4
+v5<-1964:2003; v5
+v6<-					# No9 NY subway stops
+v7<-seq(0,1000,25); v7
+#---------------------------------------------------------------------------------------------
+# paragraph 1.3.5 (page 21)
+#---------------------------------------------------------------------------------------------
+
+# problem 1.14
+com.t<-c(17,16,20,24,22,15,21,15,17,22)	# data entry
+max(com.t);mean(com.t);min(com.t)
+com.t[which(com.t==24)]<-18			# fix the wrong value
+length(com.t[com.t>=20])			# number of times commute time 20min or more
+length(com.t[com.t<18])*100/length(com.t)	# % of times com.t less than 18 
+
+# problem 1.15					
+dvd<-c(79,74,161,127,133,210,99,143,249,249,368,302)
+names(dvd)<-c('JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC')
+dvd1<-c(dvd['JAN'],dvd['MAR'],dvd['MAY'],dvd['JUL'],dvd['AUG'],dvd['OCT'],dvd['DEC'])
+dvd2<-c(dvd['FEB'],dvd['APR'],dvd['JUN'],dvd['SEP'],dvd['NOV'])
+dvd1;dvd2
+mean.31<-mean(dvd1)
+mean.30<-mean(dvd2)
+mean.31;mean.30
+
+# problem 1.16
+
+# problem 1.17
+slr<-c(0.57,0.89,1.08,1.12,1.18,1.07,1.17,1.38,1.44,1.72)
+names(slr)<-c("1990","1991","1992","1993","1994","1995","1996","1997","1998","1999")
+slr.diff<-diff(slr);slr.diff;
+per100.diff<-round(slr.diff*100/slr[-length(slr)]);per100.diff
+slr[which(per100.diff==max(per100.diff))+1]
+
+# problem 1.18
+x<-c(1,3,5,7,9)
+y<-c(2,3,5,7,11,13)
+x+1
+y*2
+length(x);length(y)
+x+y
+sum(x>5);sum(x[x>5])
+sum(x>5|x<3)
+y[3]
+y[-3]
+y[x]
+y[y>=7]
+
+#---------------------------------------------------------------------------------------------
+# paragraph 1.4.4 (page 29)
+#---------------------------------------------------------------------------------------------
+
+# problem 1.20
+sort(islands, decreasing=T)[1:7]
+
+# problem 1.21
+length(primes)
+sum(primes<=100)
+sum(primes>=100&primes<=1000)
+
+# problem 1.22
+length(which(diff(primes)==2))		# 1st way
+a<-primes[-1]					# 2nd way, suggested by the exercise
+b<-primes[-length(primes)]
+length(which((a-b)==2));length(which(diff(primes)==2))
+
+# problem 1.23
+head(treering)
+length(treering)
+min(treering)
+max(treering)
+length(treering[treering>1.5])
+
+# problem 1.24
+attach(mandms)
+names(mandms)
+which(blue==0);which(brown==0);which(green==0);which(orange==0);which(red==0);which(yellow==0)
+row.names(mandms)[3]
+detach(mandms)
+
+mandms.t<-as.data.frame(t(mandms))
+names(mandms.t)
+attach(mandms.t)
+Peanut
+detach(mandms.t)
+
+# problem 1.25
+
+# problem 1.26
+
+# problem 1.27
