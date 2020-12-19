@@ -239,6 +239,7 @@ abline(res)
 attach(mw.ages)
 head(mw.ages)
 plot(Male+Female, type='l')
-lines(supsmu(Male,Female))    # not finished
+lines(supsmu(1:103,Male),col=2)     
+lines(supsmu(1:103,Female),col=3)
 detach(mw.ages)
 
