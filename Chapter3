@@ -19,9 +19,9 @@ mtext("source: Wired magazine Sep 2003",1,4,adj=1,cex=.7)
 
 # problem 3.3
 sum(coins$value)
-table(coins)								#i
+table(coins)							                              #i
 year.m<-margin.table(table(coins),1); barplot(year.m)		#ii
-?cut										#iii
+?cut										                                #iii
 breaks<-c(1918,1929,1939,1947,1959,1969,1979,1989,1999,2010)
 labels<-c("1920-1929","1930-1939","1940-1949","1950-1959","1960-1969","1970-1979","1980-1989","1990-1999","2000-2009")
 temp<-cut(coins$year, breaks=breaks,labels=labels);table(temp)
@@ -131,7 +131,7 @@ detach(x77)
 attach(nym.2002)
 names(nym.2002)
 plot(time, age)			# I predicted a cor value of .7
-cor(time,age)			# actual rho = .1898672
+cor(time,age)		  	# actual rho = .1898672
 detach(nym.2002)
 
 # problem 3.20
@@ -139,9 +139,9 @@ with(state.center, plot(x,y))
 
 # problem 3.21
 attach(batting)
-plot(batting)	# quite heavy graph
-plot(SO,HR)		# guess rho = 0.3
-cor(SO,HR)		# actual value rho = 0.7
+plot(batting)     	# quite heavy graph
+plot(SO,HR)		      # guess rho = 0.3
+cor(SO,HR)		      # actual value rho = 0.7
 detach(batting)
 
 # problem 3.22
@@ -159,7 +159,7 @@ names(fat)
 res<-lm(abdomen~wrist); res
 plot(wrist,abdomen)
 abline(res, col=2)
-sum(coef(res)*c(1,17))		# abdomen model prediction for a 17cm wrist
+sum(coef(res)*c(1,17))		      # abdomen model prediction for a 17cm wrist
 detach(fat)
 
 # problem 3.25
@@ -170,7 +170,7 @@ res<-lm(Weight~Days, data=wtloss)
 abline(res, col=2)
 
 # problem 3.26
-class(state.x77)		# "matrix" "array"
+class(state.x77)	            	# "matrix" "array"
 x77<-data.frame(state.x77); names(x77)
 lm1=Illiteracy~HS.Grad;lm2=Life.Exp~Murder;lm3=Income~Illiteracy
 res1<-lm(lm1, data=x77)
@@ -188,12 +188,12 @@ abline(res3)
 attach(batting); names(batting)
 f=RBI~HR; res<-lm(f)
 plot(f); abline(res, lwd=2, col=2)
-MP.pred1<-sum(coef(res)*c(1,33)); MP.pred1	# prediction for Mike Piazza with home run=33
+MP.pred1<-sum(coef(res)*c(1,33)); MP.pred1	                # prediction for Mike Piazza with home run=33
 MP.pred2<-predict(res, data.frame(HR=33));MP.pred2
-98-MP.pred1			# residual: -6.1099
-residuals(res)[HR==33]	# this will give all instances of HR=23		
-batting[HR==33,] 		# all rows for which HR=23
-residuals(res)[playerID=='piazzi01']	# this function gives the right residual
+98-MP.pred1			                                            # residual: -6.1099
+residuals(res)[HR==33]	                                    # this will give all instances of HR=23		
+batting[HR==33,] 		                                        # all rows for which HR=23
+residuals(res)[playerID=='piazzi01']                       	# this function gives the right residual
 detach(batting)
 
 # problem 3.28
