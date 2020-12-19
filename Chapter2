@@ -23,8 +23,8 @@ detach(central.park)
 # problem 2.5
 browser<-c(.86,.4,.5,.1,.4)
 names(browser)<-c('explorer','gecko','netscape','opera','NA')
-barplot(browser*100, main="browser statistics", xlab=, ylab="usage percentage (%)", );mtext("source ...",1,4,adj=1,cex=.7)			# bar chart
-pie(browser*100,main="browser statistics")																# pie chart
+barplot(browser*100, main="browser statistics", xlab=, ylab="usage percentage (%)", );mtext("source ...",1,4,adj=1,cex=.7)				# bar chart
+pie(browser*100,main="browser statistics")														# pie chart
 dotchart(browser,main="browser statistics", xlab="usage percentage (%)",ylab="browser type/brand");mtext("source ...",1,4,adj=1,cex=.7)	# dot chart
 
 # problem 2.6
@@ -32,9 +32,9 @@ mp3<-c(.18, .15, .144, .135, .062); names(mp3)<-c('apple','rca','rio','iRiver','
 (1-sum(mp3))*100				# percent of other
 mp3<-c(mp3,(1-sum(mp3))); names(mp3)[6]<-"other" ; mp3
 dollars<-mp3*22; dollars*1000000	# dollars per company
-barplot(dollars, main="Sales of MP3 players", xlab="mp3 company", ylab="Sales in million $", );mtext("source NY Times",1,4,adj=1,cex=.7)	# bar chart
+barplot(dollars, main="Sales of MP3 players", xlab="mp3 company", ylab="Sales in million $", );mtext("source NY Times",1,4,adj=1,cex=.7)		# bar chart
 pie(dollars,main="Sales of MP3 players"); ;mtext("source NY Times",1,4,adj=1,cex=.7)									# pie chart
-dotchart(dollars,main="Sales of MP3 players", xlab="Sales in million $",ylab="mp3 company");mtext("source NY Times",1,4,adj=1,cex=.7)	# dot chart
+dotchart(dollars,main="Sales of MP3 players", xlab="Sales in million $",ylab="mp3 company");mtext("source NY Times",1,4,adj=1,cex=.7)			# dot chart
 
 # problem 2.7
 attach(mtcars)
@@ -65,15 +65,15 @@ detach(MLBattend)
 
 # problem 2.11
 temp<-c(80,82,88,91,91,95,95,97,98,101,106,106,109,110,111)
-stem(temp)			# by inspection of the stem chart the media is 97
+stem(temp)										# by inspection of the stem chart the media is 97
 median(temp)
 
 # problem 2.12
 # from inspection: median=58, mean= 54, trimmed mean=56
-temp<-scan("tempR.txt"); temp		#vanues scanned in: 12 17 23 28 34 42 50 59 66 73 79 87 96 103 110
+temp<-scan("tempR.txt"); temp								#vanues scanned in: 12 17 23 28 34 42 50 59 66 73 79 87 96 103 110
 median(temp); mean(temp); mean(temp, trim=.1)  #median=62.5, mean=61.14286, trimmed mean=61.16667
-# the above values mediate a lot from my predictions, I checke the data and the 3rd value (23) was missing
-# new values median=59, mean= 58.6, trimmed mean=58.23077
+											# the above values mediate a lot from my predictions, I checke the data and the 3rd value (23) was missing
+											# new values median=59, mean= 58.6, trimmed mean=58.23077
 
 # problem 2.13 - no code is needed
 # problem 2.14 - no code is needed
@@ -144,10 +144,10 @@ plot(x2[-length(x2)],x2[-1])
 
 # problem 2.30
 hist(bumpers)						# guesses:	mean=2000, median=2000, sd=1000
-mean(bumpers); median(bumpers); sd(bumpers)	# ans:	mean=2122, median=2129, sd=798
+mean(bumpers); median(bumpers); sd(bumpers)		# ans:	mean=2122, median=2129, sd=798
 hist(firstchi)						# guesses:	mean=22,5, median=26, sd=8 
-mean(firstchi); median(firstchi); sd(firstchi)	# ans:	mean=23.9, median=23, sd=6.2 
-hist(math)							# guesses:	mean=55, median=55, sd=10 
+mean(firstchi); median(firstchi); sd(firstchi)		# ans:	mean=23.9, median=23, sd=6.2 
+hist(math)						# guesses:	mean=55, median=55, sd=10 
 mean(math); median(math); sd(math)			# ans:	mean=54.9, median=54, sd=9,7 
 
 # problem 2.31
@@ -167,8 +167,8 @@ detach(normtemp)
 # problem 2.34
 head(DDT)
 hist(DDT)		# guess:	mean=3.5, sd=0.8
-boxplot(DDT)	# guess:	mean=, sd=
-mean(DDT);sd(DDT)	# ans:	mean=3.328, sd=0.4371531
+boxplot(DDT)		# guess:	mean=, sd=
+mean(DDT);sd(DDT)	# ans:		mean=3.328, sd=0.4371531
 
 # problem 2.35
 names(state.area)<-state.abb
@@ -180,7 +180,7 @@ state.area[state.area>f[4]]	# chooses the values greater than the upper hinge
 
 # problem 2.36
 attach(nym.2002)
-hist(time)		skewed to the right (positive skewness), thus: mean>median>mode
+hist(time)			#skewed to the right (positive skewness), thus: mean>median>mode
 lines(density(time))
 detach(nym.2002)
 
@@ -190,15 +190,15 @@ mean(lawsuits);median(lawsuits)
 
 # problem 2.38
 attach(babyboom)
-hist(wt)		# skewed to the left (negative skewness), thus: mean<median<mode
+hist(wt)			# skewed to the left (negative skewness), thus: mean<median<mode
 hist(diff(running.time))
 detach(babyboom)
 
 # problem 2.39
 attach(hall.fame)
-hist(HR)		# skewed to right (pisitive skewness)
-hist(BA)		# symmetric
-hist(OBP)		# symmetric
+hist(HR)			# skewed to right (pisitive skewness)
+hist(BA)			# symmetric
+hist(OBP)			# symmetric
 
 # problem 2.40
 
@@ -215,7 +215,7 @@ attach(cfb)
 hist(AGE)
 hist(EDUC)
 hist(NETWORTH)
-hist(log(SAVING+1))	#SAVING has mainly numbers around zero and few value many orders of magnitude higher
+hist(log(SAVING+1))		#SAVING has mainly numbers around zero and few value many orders of magnitude higher
 				#to get rid of of all these multiple zeros figures and the shape distortion they cause
 				#we log the y-scale. But since many sbj from the sample have zero savings, and log is INF for 0
 				#we add 1 to correct this
@@ -233,7 +233,7 @@ boxplot(log(lawsuits))
 
 # problem 2.45
 a<-exec.pay
-a.log<-log(1+a, 10)	# log with base 10
+a.log<-log(1+a, 10)		# log with base 10
 hist(a)
 hist(a.log)
 median(a.log);mean(a.log)
