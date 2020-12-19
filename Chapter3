@@ -154,22 +154,91 @@ detach(batting)
 # problem 3.23
 
 # problem 3.24
+attach(fat); head(fat)
+names(fat)
+res<-lm(abdomen~wrist); res
+plot(wrist,abdomen)
+abline(res, col=2)
+sum(coef(res)*c(1,17))		# abdomen model prediction for a 17cm wrist
+detach(fat)
 
 # problem 3.25
+names(wtloss)
+plot(Weight~Days, data=wtloss)
+with(wtloss, cor(Weight,Days))	# 1. Pearson correlation
+res<-lm(Weight~Days, data=wtloss) 
+abline(res, col=2)
 
 # problem 3.26
+class(state.x77)		# "matrix" "array"
+x77<-data.frame(state.x77); names(x77)
+lm1=Illiteracy~HS.Grad;lm2=Life.Exp~Murder;lm3=Income~Illiteracy
+res1<-lm(lm1, data=x77)
+res2<-lm(lm2, data=x77)
+res3<-lm(lm3, data=x77)
+par(mfrow=c(1,3))
+plot(lm1, data=x77)
+abline(res1)
+plot(lm2, data=x77)
+abline(res2)
+plot(lm3, data=x77)
+abline(res3)
 
 # problem 3.27
+attach(batting); names(batting)
+f=RBI~HR; res<-lm(f)
+plot(f); abline(res, lwd=2, col=2)
+MP.pred1<-sum(coef(res)*c(1,33)); MP.pred1	# prediction for Mike Piazza with home run=33
+MP.pred2<-predict(res, data.frame(HR=33));MP.pred2
+98-MP.pred1			# residual: -6.1099
+residuals(res)[HR==33]	# this will give all instances of HR=23		
+batting[HR==33,] 		# all rows for which HR=23
+residuals(res)[playerID=='piazzi01']	# this function gives the right residual
+detach(batting)
 
 # problem 3.28
+attach(too.young); head(too.young)
+f=Female~Male; res<-lm(f)
+plot(f)
+abline(res);abline(c(7,.5),col=2)
+detach(too.young)
 
 # problem 3.29
+attach(diamond)
+f=price~carat; res<-lm(f)
+plot(f, pch=5); abline(res)
+predict(res, data.frame(carat=1/3));sum(coef(res)*c(1,1/3))
+detach(diamond)
 
 # problem 3.30
+attach(Animals)
+head(Animals)
+plot(brain,body)
+log.body<-log(body); log.brain<-log(brain)
+f=log.body~log.brain; res<-lm(f)
+plot(f); abline(res)
+abline(lqs(f), col=2)
+detach(Animals)
 
 # problem 3.31
+attach(breakdown); head(breakdown)
+plot(time, voltage)
+log.time<-log(time)
+f=voltage~log.time; res<-lm(f)
+plot(f); abline(res, col=2)
+detach(breakdown)
 
 # problem 3.32
+data(motors)
+f=time~temp ; res<-lm(f, data=motors)
+coef(res)
+plot(f, pch=cens, data=motors)
+abline(res)
 
 # problem 3.33
+attach(mw.ages)
+head(mw.ages)
+plot(Male+Female, type='l')
+lines(supsmu(Male,Female))    # not finished
+detach(mw.ages)
 
